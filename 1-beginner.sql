@@ -144,7 +144,16 @@ CustomerType varchar(20);
 -- (7, 'old'), 
 -- (8, 'old'),
 -- (9, 'new'), 
--- (10, 'new'); 
+-- (10, 'new');
+
+-- BETWEEN operator:
+-- SELECT column_name(s) FROM table_name
+-- WHERE column_name BETWEEN value1 AND value2; 
+
+-- IN operator:
+-- SELECT column_name(s) FROM table_name
+-- WHERE column_name IN (list_of_values);
+
 -- (Output 8)
 UPDATE Customer SET CustomerType = 'new' WHERE CustomerID IN (1, 3, 5, 9, 10);
 UPDATE Customer SET CustomerType = 'old' WHERE CustomerID IN (2, 4, 6, 7, 8);
