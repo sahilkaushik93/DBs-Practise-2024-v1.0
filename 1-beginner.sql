@@ -11,9 +11,9 @@ CREATE TABLE if not exists Customer(
     LastName VARCHAR(50),
     Country VARCHAR(50),
     Age INT CHECK (Age >= 0 AND Age <= 99),
-    Phone int(10)
+    Phone int8
 );
-
+-- drop table customer;
 -- insert values inside a table
 INSERT INTO Customer (CustomerID, CustomerName, LastName, Country, Age, Phone)
 VALUES (1, 'Shubham', 'Thakur', 'India','23',42432422),
@@ -82,8 +82,32 @@ select * from student_details;
 -- drop table practisesql2024.student_details;
 -- truncate table practisesql2024.student_details;
 
+-- performing arithmetic operations
+-- (output 5)
+select * from student_details;
+select NAME, PHONE, AGE, 
+PHONE%AGE as "MODULO(PHONE%AGE)",
+AGE + (PHONE%AGE) as "SUM of AGE & MODULO"
+from student_details;
 
+-- Wildcards
+-- "%" : It is used in substiture of zero or more characters
+-- "_" : It is used as a substitute for one character.
+-- "-" : It is used to substitute a range of characters.
+-- "[range_of_characters]" : It is used to fetch a matching set or range of 
+--                           characters specified inside the brackets.
+INSERT INTO Customer (CustomerID, CustomerName, LastName, Country, Age, Phone)
+VALUES (6, 'Shubh', 'kaur', 'India','23','9125368745'),
+       (7, 'Aan ', 'opra', 'Australia','21','9632784152'),
+       (8, 'Navneet', 'lasi', 'Sri lanka','24','8965741538'),
+       (9, 'Adityanath', 'darpan', 'Austria','21','9874589736'),
+       (10, 'Nisha', 'ujjain', 'Spain','22','8754128965');
 
+-- (output 6)
+Select * from Customer 
+where Country like 's%' and 
+CustomerName like 'Nav%' and 
+Phone like '%4_4%';
 
 
 
