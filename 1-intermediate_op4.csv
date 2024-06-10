@@ -1,0 +1,11 @@
+CustomerID,CustomerName,LastName,Country,Age,Phone,CustomerType,Nationality
+1,Shubham,Thakur,India,23,42432422,new,Asian
+2,"Aman ",Chopra,Australia,21,42432422,old,Foreign
+3,Naveen,Tulasi,"Sri lanka",24,42432422,new,Asian
+4,Aditya,Arpan,Austria,21,42432422,old,Foreign
+5,"Nishant. Salchichas S.A.",Jain,Spain,22,42432422,new,Foreign
+6,Shubh,kaur,India,23,9125368745,old,Asian
+7,Aana,Verma,Australia,21,9632784152,old,Foreign
+8,Navneet,lasi,"Sri lanka",24,8965741538,old,Asian
+9,Adityanath,darpan,Austria,21,9874589736,new,Foreign
+10,Nisha,ujjain,Spain,22,8754128965,new,Foreign

@@ -61,7 +61,15 @@ ORDER BY NAME
 LIMIT 50
 OFFSET 1;
 
+-- CASE expression
+-- (Output 4)
 select * from customer;
+select *, 
+case 
+when Country In ('India', 'Sri Lanka') then 'Asian'
+else 'Foreign'
+end as Nationality
+from customer;
 
 
 
