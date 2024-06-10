@@ -61,7 +61,7 @@ ORDER BY NAME
 LIMIT 50
 OFFSET 1;
 
-
+select * from customer;
 
 
 
