@@ -109,14 +109,45 @@ where Country like 's%' and
 CustomerName like 'Nav%' and 
 Phone like '%4_4%';
 
+-- update statement (delete works similiar to update)
+-- DELETE FROM Customer WHERE CustomerID = 1;  
+-- (output 7)
+update Customer 
+set CustomerName = 'Aana', LastName = 'Verma' 
+where CustomerID = 7;
 
+select * from Customer;
 
+-- ALTER TABLE command can add, delete, or modify columns of an existing table.
+-- ALTER TABLE table_name
+-- clause [column_name] [datatype];
+-- Here "clause" can be - 
+-- ADD(to add a column), 
+-- MODIFY(to change the data type of an existing column), 
+-- DROP(to delete an existing column), 
+-- RENAME(to rename a column)
 
+ALTER table Customer 
+ADD 
+CustomerType varchar(20);
 
-
-
-
-
-
+-- We can't insert values for new column using INSERT statement, instead
+-- we require UPDATE statement to insert values post ALTER
+-- insert ignore into Customer (CustomerID, CustomerType) 
+-- values 
+-- (1, 'new'), 
+-- (2, 'old'),
+-- (3, 'new'), 
+-- (4, 'old'),
+-- (5, 'new'), 
+-- (6, 'old'),
+-- (7, 'old'), 
+-- (8, 'old'),
+-- (9, 'new'), 
+-- (10, 'new'); 
+-- (Output 8)
+UPDATE Customer SET CustomerType = 'new' WHERE CustomerID IN (1, 3, 5, 9, 10);
+UPDATE Customer SET CustomerType = 'old' WHERE CustomerID IN (2, 4, 6, 7, 8);
+select * from Customer;
 
 
