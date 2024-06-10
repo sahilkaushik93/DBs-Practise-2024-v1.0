@@ -1,0 +1,7 @@
+Field,Type,Null,Key,Default,Extra
+CustomerID,int,NO,PRI,NULL,
+CustomerName,varchar(50),YES,,NULL,
+LastName,varchar(50),YES,,NULL,
+Country,varchar(50),YES,,NULL,
+Age,int,YES,,NULL,
+Phone,int,YES,,NULL,
