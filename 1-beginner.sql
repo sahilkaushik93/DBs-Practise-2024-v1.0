@@ -159,4 +159,21 @@ UPDATE Customer SET CustomerType = 'new' WHERE CustomerID IN (1, 3, 5, 9, 10);
 UPDATE Customer SET CustomerType = 'old' WHERE CustomerID IN (2, 4, 6, 7, 8);
 select * from Customer;
 
+-- commonly used aggregate functions are: MIN(), MAX(), COUNT(), AVG() AND SUM()
+-- aggregate functions are used with GROUP BY generally
+-- DISTINCT is used to fetch unique values
+
+-- general syntax heirarchy is as following:-
+-- SELECT column1, function_name(column2)
+-- FROM table_name
+-- WHERE condition
+-- GROUP BY column1, column2
+-- HAVING condition
+-- ORDER BY column1, column2;
+
+
+
+
+
+
 
