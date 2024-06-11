@@ -71,6 +71,87 @@ else 'Foreign'
 end as Nationality
 from customer;
 
+-- ALL OPERATORY:-
+-- ALL operator is used to select all tuples of SELECT STATEMENT. 
+-- It is also used to compare a value to every value in another 
+-- value set or result from a subquery.
+-- The ALL operator returns TRUE if all of the subqueries values meet the condition. 
+-- The ALL must be preceded by comparison operators and evaluates true if all of 
+-- the subqueries values meet the condition.
+-- ALL is used with SELECT, WHERE, HAVING statement
+-- Syntax:
+-- SELECT column_name(s)
+-- FROM table_name
+-- WHERE column_name comparison_operator ALL
+-- (SELECT column_name
+-- FROM table_name
+-- WHERE condition(s));
+
+CREATE TABLE Product (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Product (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 1500.00),
+(2, 'Smartphone', 800.00),
+(3, 'Tablet', 600.00),
+(4, 'Monitor', 300.00);
+
+CREATE TABLE OrderDetails (
+    OrderID INT,
+    ProductID INT,
+    Quantity INT
+);
+
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity) VALUES
+(1, 1, 5),
+(2, 2, 3),
+(3, 3, 4),
+(4, 4, 2);
+
+-- The ALL operator compares a value to all values in another set of values (a subquery). 
+-- It returns TRUE if the comparison is true for all values in the set.
+-- Example:
+-- Find products whose price is greater than all products that have been ordered with 
+-- a quantity greater than 3.
+SELECT ProductName, Price
+FROM Product
+WHERE Price > ALL 
+(SELECT Price FROM Product WHERE ProductID IN 
+(SELECT ProductID FROM OrderDetails WHERE Quantity > 3));
+
+-- Explanation:
+-- 1.
+-- The subquery (SELECT ProductID FROM OrderDetails WHERE Quantity > 3) 
+-- finds the ProductID of products ordered in quantities greater than 3.
+-- 2.
+-- The inner subquery (SELECT Price FROM Product WHERE ProductID IN (...)) 
+-- gets the prices of those products.
+-- 3.
+-- The outer query compares the price of each product to all prices returned 
+-- by the subquery, returning only those products that are more expensive 
+-- than all the prices in the subquery.
+
+
+-- ANY Operator
+-- The ANY operator compares a value to any value in a set of values (a subquery). 
+-- It returns TRUE if the comparison is true for any one of the values in the set.
+-- Example
+-- Using the same tables, let's find products that are cheaper than any product 
+-- that has been ordered with a quantity greater than 2.
+
+SELECT ProductName, Price
+FROM Product
+WHERE Price < ANY 
+(SELECT Price FROM Product WHERE ProductID IN 
+(SELECT ProductID FROM OrderDetails WHERE Quantity > 2));
+
+
+
+
+
 
 
 
