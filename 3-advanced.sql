@@ -32,10 +32,19 @@ UNION ALL
 select roll_no, branch from practisesql2024.student_branch where roll_no < 3;
 
 -- 2. INTERSECT CLAUSE:-
+-- provide the result of the intersection of two select statements. This implies the 
+-- result contains all the rows which are common to both the SELECT statements
+-- (Output 3)
+select roll_no name from practisesql2024.student_details
+INTERSECT 
+select roll_no from practisesql2024.student_branch;
 
-
-
-
+-- 3. EXCEPT clause :  contains all the rows that are returned by the first SELECT operation, 
+-- and not returned by the second SELECT operation
+-- (Output 4)
+select roll_no name from practisesql2024.student_details
+EXCEPT 
+select roll_no from practisesql2024.student_branch;
 
 
 
