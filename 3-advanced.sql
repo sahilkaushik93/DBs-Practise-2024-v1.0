@@ -47,9 +47,7 @@ EXCEPT
 select roll_no from practisesql2024.student_branch;
 
 -- INNER JOIN
--- table1: First table.
--- table2: Second table
--- matching_column: Column common to both the tables.
+-- It brings common part from two sets
 -- Note: We can also write JOIN instead of INNER JOIN. JOIN is same as INNER JOIN. 
 select * from sakila.actor;
 select * from sakila.film_actor;
@@ -63,13 +61,59 @@ sakila.film_actor as film_ac
 ON ac.actor_id = film_ac.actor_id;
 
 -- LEFT JOIN
+-- LEFT JOIN returns all the rows of the table on the left side of the join and 
+-- matches rows for the table on the right side of the join. For the rows for which there 
+-- is no matching row on the right side, the result-set will contain null. LEFT JOIN is also 
+-- known as LEFT OUTER JOIN.
+-- RIGHT JOIN (opposite of LEFT JOIN)
+select * from sakila.film_category;
+-- (Output 6)
+select count(ac.actor_id) as "total_actors", count(cat.film_id) as "total_films", cat.category_id
+from 
+sakila.film_actor as ac
+LEFT JOIN
+sakila.film_category as cat
+ON ac.film_id = cat.film_id
+WHERE ac.actor_id = 20
+GROUP BY cat.category_id
+HAVING total_actors > 3
+ORDER BY cat.category_id;
 
--- RIGHT JOIN
+-- CARTESIAN JOIN/CROSS JOIN
+-- The CARTESIAN JOIN is also known as CROSS JOIN. In a CARTESIAN JOIN there is a 
+-- join for each row of one table to every row of another table. 
+-- This usually happens when the matching column or WHERE condition is not specified.
+-- In the absence of a WHERE condition the CARTESIAN JOIN will behave like a CARTESIAN PRODUCT. 
+-- i.e., the number of rows in the result-set is the product of the number of rows of the two tables.
+-- In the presence of WHERE condition this JOIN will function like a INNER JOIN.
+-- Generally speaking, Cross join is similar to an inner join where the join-condition 
+-- will always evaluate to True
+select * from practisesql2024.student_branch;
+select * from practisesql2024.student_details;
 
--- CARTESIAN PROD
+-- (Output 7)
+select sd.ROLL_NO, sd.NAME, sb.branch, sb.grade from 
+practisesql2024.student_branch as sb
+CROSS JOIN
+practisesql2024.student_details as sd;
+
+-- (Output 8)
+select sd.ROLL_NO, sd.NAME, sb.branch, sb.grade from 
+practisesql2024.student_branch as sb
+CROSS JOIN
+practisesql2024.student_details as sd
+where sb.roll_no = sd.ROLL_NO;
 
 -- SELF JOIN
-
-
+-- SELF JOIN a table is joined to itself. That is, each row of the table is joined with itself 
+-- and all other rows depending on some conditions. In other words we can say that it is a 
+-- join between two copies of the same table.
+-- (Output 9)
+select a.*, b.*
+from 
+practisesql2024.student_details as a,
+practisesql2024.student_details as b
+where 
+a.ROLL_NO = b.ROLL_NO;
 
 
