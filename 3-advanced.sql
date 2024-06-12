@@ -46,7 +46,29 @@ select roll_no name from practisesql2024.student_details
 EXCEPT 
 select roll_no from practisesql2024.student_branch;
 
+-- INNER JOIN
+-- table1: First table.
+-- table2: Second table
+-- matching_column: Column common to both the tables.
+-- Note: We can also write JOIN instead of INNER JOIN. JOIN is same as INNER JOIN. 
+select * from sakila.actor;
+select * from sakila.film_actor;
 
+-- (Output 5)
+select ac.actor_id, film_ac.film_id, concat(ac.first_name," " ,ac.last_name) as actor_name
+from 
+sakila.actor as ac
+INNER JOIN
+sakila.film_actor as film_ac
+ON ac.actor_id = film_ac.actor_id;
+
+-- LEFT JOIN
+
+-- RIGHT JOIN
+
+-- CARTESIAN PROD
+
+-- SELF JOIN
 
 
 
